@@ -4,7 +4,7 @@ class dEntry:
     #starts day counter
     num_days = 0
 
-    def __init__(self, wakeup_time, oob_time, slp_ql, wtb_time, dtasks, dream):
+    def __init__(self, wakeup_time, oob_time, slp_ql, dream, dtasks, wtb_time):
 
         #increments day counter
         dEntry.num_days += 1
