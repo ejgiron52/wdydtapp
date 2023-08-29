@@ -17,180 +17,161 @@ WindowManager:
 
 <StartWindow>:
     name: "start"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "Good morning Emily!"
+        pos_hint: {'center_x': .5, 'center_y': .6}
+        font_size: self.width/30
 
-        Label:
-            text: "Good morning Emily!"
-            pos_hint: {'center_x': .5, 'center_y': .6}
-            font_size: self.width/30
+    Label:
+        text: "What time did you wake up this morning?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "What time did you wake up this morning?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        focus: True
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: False
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release:
-                app.root.current = "oob"
-
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release:
+            app.root.current = "oob"
 
 <SecondWindow>:
     name: "oob"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "What time did you get out of bed this morning?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "What time did you get out of bed this morning?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: False
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release: app.root.current = "slpql"
-
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release: app.root.current = "slpql"
 
 <SlpQualWindow>:
     name: "slpql"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "How did you sleep?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "How did you sleep?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: False
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release: app.root.current = "dreams"
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release: app.root.current = "dreams"
 
 <DreamsWindow>:
     name: "dreams"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "What did you dream about?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "What did you dream about?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: True
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release:
-                app.root.current = "tags"
-                app.p_stats()
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release:
+            app.root.current = "tags"
+            app.p_stats()
 
 <Button>:
     width: len(self.text) * 50
 
 <TagsWindow>:
     name: "tags"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "What did you do today?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "What did you do today?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: False
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
+    Button:
+        id: bedtime
+        text: "Time for bed"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+        size_hint: 0.2, 0.05
+        text_size: self.width, self.height
+        halign:'center'
+        valign: 'center'
+        font_size: self.height - dp(15)
+        on_release:app.root.current = "bedtime"
 
-        Button:
-            id: bedtime
-            text: "Time for bed"
-            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-            size_hint: 0.2, 0.05
-            text_size: self.width, self.height
-            halign:'center'
-            valign: 'center'
-            font_size: self.height - dp(15)
-            on_release:app.root.current = "bedtime"
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release:
-                app.collect_tag()
-                app.clear_tag_input()
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release:
+            app.collect_tag()
+            app.clear_tag_input()
 
 <BedTimeWindow>:
     name: "bedtime"
-    FloatLayout:
-        size: root.width, root.height
+    Label:
+        text: "What time did you go to bed?"
+        pos_hint: {'center_x': .5, 'center_y': .56}
+        font_size: self.width/30
 
-        Label:
-            text: "What time did you go to bed?"
-            pos_hint: {'center_x': .5, 'center_y': .56}
-            font_size: self.width/30
+    TextInput:
+        id: input
+        multiline: False
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        size_hint: 0.2, 0.05
 
-        TextInput:
-            id: input
-            multiline: False
-            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            size_hint: 0.2, 0.05
-
-        MDIconButton:
-            id: check_btn
-            icon: "checkbox-marked-circle"
-            pos_hint: {'x': .61, 'top': .525}
-            size_hint: (.05, .05)
-            theme_icon_color: "Custom"
-            icon_color: (0,.5,.75,1)
-            on_release:
-                app.make_entry()
-                app.p_stats()
-                app.clear_inputs()
-                app.root.current = "start"
+    MDIconButton:
+        id: check_btn
+        icon: "checkbox-marked-circle"
+        pos_hint: {'x': .61, 'top': .525}
+        size_hint: (.05, .05)
+        theme_icon_color: "Custom"
+        icon_color: (0,.5,.75,1)
+        on_release:
+            app.make_entry()
+            app.p_stats()
+            app.clear_inputs()
+            app.root.current = "start"
