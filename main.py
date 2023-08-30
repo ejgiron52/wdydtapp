@@ -45,8 +45,14 @@ class MainApp(MDApp):
         print(f"You got out of bed at: {daily_stats.oob_time}")
         print(f"Sleep quality was: {daily_stats.slp_ql}")
         print(f"Today's dreams: {daily_stats.dream}")
-        print(f"Today's tasks: {daily_stats.dtasks}")
-        print(f"Bedtime was: {daily_stats.wtb_time}\n")
+        if daily_stats.dtasks == []:
+            pass
+        else:
+            print(f"Today's tasks: {daily_stats.dtasks}\n")
+        if daily_stats.wtb_time == "":
+            pass
+        else:
+            print(f"Bedtime was: {daily_stats.wtb_time}\n")
 
     #adds tag to list of tags, prints tags
     def collect_tag(self):

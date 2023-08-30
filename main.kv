@@ -33,6 +33,7 @@ WindowManager:
         focus: True
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.2, 0.05
+        on_text_validate: app.root.current = "oob"
 
     MDIconButton:
         id: check_btn
@@ -56,6 +57,7 @@ WindowManager:
         multiline: False
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.2, 0.05
+        on_text_validate: app.root.current = "slpql"
 
     MDIconButton:
         id: check_btn
@@ -78,6 +80,7 @@ WindowManager:
         multiline: False
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.2, 0.05
+        on_text_validate: app.root.current = "dreams"
 
     MDIconButton:
         id: check_btn
@@ -97,9 +100,10 @@ WindowManager:
 
     TextInput:
         id: input
-        multiline: False
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
+        multiline: True
+        size_hint: 0.2, 0.1
+        height: '50dp'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
 
     MDIconButton:
         id: check_btn
@@ -114,6 +118,7 @@ WindowManager:
 
 <Button>:
     width: len(self.text) * 50
+    background_color: (.3,.75,1,1)
 
 <TagsWindow>:
     name: "tags"
@@ -127,6 +132,7 @@ WindowManager:
         multiline: False
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         size_hint: 0.2, 0.05
+        on_text_validate: app.collect_tag(), app.clear_tag_input()
 
     Button:
         id: bedtime
