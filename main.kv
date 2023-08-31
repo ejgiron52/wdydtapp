@@ -17,15 +17,19 @@ WindowManager:
 
 <StartWindow>:
     name: "start"
-    Label:
+    MDLabel:
         text: "Good morning Emily!"
-        pos_hint: {'center_x': .5, 'center_y': .6}
-        font_size: self.width/30
+        pos_hint:{"center_x":.5,"center_y":.62}
+        halign: 'center'
+        font_size: self.width/20
+        color: (0,.5,.75,1)
 
-    Label:
+    MDLabel:
         text: "What time did you wake up this morning?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -47,10 +51,12 @@ WindowManager:
 
 <SecondWindow>:
     name: "oob"
-    Label:
+    MDLabel:
         text: "What time did you get out of bed this morning?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -70,10 +76,12 @@ WindowManager:
 
 <SlpQualWindow>:
     name: "slpql"
-    Label:
+    MDLabel:
         text: "How did you sleep?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -93,10 +101,12 @@ WindowManager:
 
 <DreamsWindow>:
     name: "dreams"
-    Label:
+    MDLabel:
         text: "What did you dream about?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -116,16 +126,14 @@ WindowManager:
             app.root.current = "tags"
             app.p_stats()
 
-<Button>:
-    width: len(self.text) * 50
-    background_color: (.3,.75,1,1)
-
 <TagsWindow>:
     name: "tags"
-    Label:
+    MDLabel:
         text: "What did you do today?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -134,15 +142,11 @@ WindowManager:
         size_hint: 0.2, 0.05
         on_text_validate: app.collect_tag(), app.clear_tag_input()
 
-    Button:
-        id: bedtime
+    MDRaisedButton:
         text: "Time for bed"
-        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-        size_hint: 0.2, 0.05
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        md_bg_color: app.theme_cls.primary_dark
         text_size: self.width, self.height
-        halign:'center'
-        valign: 'center'
-        font_size: self.height - dp(15)
         on_release:app.root.current = "bedtime"
 
     MDIconButton:
@@ -158,10 +162,12 @@ WindowManager:
 
 <BedTimeWindow>:
     name: "bedtime"
-    Label:
+    MDLabel:
         text: "What time did you go to bed?"
         pos_hint: {'center_x': .5, 'center_y': .56}
+        halign: 'center'
         font_size: self.width/30
+        color: (0,.5,.75,1)
 
     TextInput:
         id: input
@@ -177,7 +183,6 @@ WindowManager:
         theme_icon_color: "Custom"
         icon_color: (0,.5,.75,1)
         on_release:
-            app.make_entry()
             app.p_stats()
             app.clear_inputs()
             app.root.current = "start"

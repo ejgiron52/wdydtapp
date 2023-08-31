@@ -22,7 +22,7 @@ class WindowManager(ScreenManager):
     pass
 class MainApp(MDApp):
     def build(self):
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "BlueGray"
         kv = Builder.load_file('main.kv')
         self.tags = []
         return kv
@@ -45,13 +45,9 @@ class MainApp(MDApp):
         print(f"You got out of bed at: {daily_stats.oob_time}")
         print(f"Sleep quality was: {daily_stats.slp_ql}")
         print(f"Today's dreams: {daily_stats.dream}")
-        if daily_stats.dtasks == []:
-            pass
-        else:
+        if daily_stats.dtasks:
             print(f"Today's tasks: {daily_stats.dtasks}\n")
-        if daily_stats.wtb_time == "":
-            pass
-        else:
+        if daily_stats.wtb_time:
             print(f"Bedtime was: {daily_stats.wtb_time}\n")
 
     #adds tag to list of tags, prints tags
