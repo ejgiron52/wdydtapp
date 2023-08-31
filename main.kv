@@ -31,12 +31,11 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
         multiline: False
-        focus: True
+        size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
         on_text_validate: app.root.current = "oob"
 
     MDIconButton:
@@ -58,11 +57,11 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
         multiline: False
+        size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
         on_text_validate: app.root.current = "slpql"
 
     MDIconButton:
@@ -83,11 +82,11 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
         multiline: False
+        size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
         on_text_validate: app.root.current = "dreams"
 
     MDIconButton:
@@ -108,12 +107,12 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
-        multiline: True
-        size_hint: 0.2, 0.1
-        height: '50dp'
-        pos_hint: {'center_x': 0.5, 'center_y': 0.48}
+        multiline: False
+        size_hint_x: 0.2
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_text_validate: app.root.current = "tags"
 
     MDIconButton:
         id: check_btn
@@ -135,11 +134,11 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
         multiline: False
+        size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
         on_text_validate: app.collect_tag(), app.clear_tag_input()
 
     MDRaisedButton:
@@ -147,6 +146,7 @@ WindowManager:
         pos_hint: {"center_x": 0.5, "center_y": 0.3}
         md_bg_color: app.theme_cls.primary_dark
         text_size: self.width, self.height
+        padding: 25,
         on_release:app.root.current = "bedtime"
 
     MDIconButton:
@@ -169,11 +169,11 @@ WindowManager:
         font_size: self.width/30
         color: (0,.5,.75,1)
 
-    TextInput:
+    MDTextField:
         id: input
         multiline: False
+        size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        size_hint: 0.2, 0.05
 
     MDIconButton:
         id: check_btn
