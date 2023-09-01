@@ -1,7 +1,4 @@
-#: import NoTransition kivy.uix.screenmanager.NoTransition
-
 WindowManager:
-    transition: NoTransition()
     StartWindow:
         id: start
     SecondWindow:
@@ -33,6 +30,7 @@ WindowManager:
 
     MDTextField:
         id: input
+        focus: True
         multiline: False
         size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -59,6 +57,7 @@ WindowManager:
 
     MDTextField:
         id: input
+
         multiline: False
         size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
