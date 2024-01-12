@@ -11,6 +11,10 @@ WindowManager:
         id: tags
     BedTimeWindow:
         id: bedtime
+    StatsWindow:
+        id: stats
+    MenuWindow:
+        id: menu
 
 <StartWindow>:
     name: "start"
@@ -30,7 +34,6 @@ WindowManager:
 
     MDTextField:
         id: input
-        focus: True
         multiline: False
         size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -57,7 +60,6 @@ WindowManager:
 
     MDTextField:
         id: input
-
         multiline: False
         size_hint_x: 0.2
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -182,6 +184,76 @@ WindowManager:
         theme_icon_color: "Custom"
         icon_color: (0,.5,.75,1)
         on_release:
+            app.update_wtb_time()
             app.p_stats()
+            app.root.current = "menu"
+
+<Content>:
+    ScrollView:
+        MDList:
+            OneLineListItem:
+                text: "A new day begins"
+
+            OneLineListItem:
+                text: "Show stats"
+
+<MenuWindow>:
+    name: "menu"
+    Screen:
+        MDTopAppBar:
+            title: 'menu toolbar'
+            pos_hint: {"top":1}
+            left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            Content:
+
+    MDRaisedButton:
+        text: "A new day begins"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        md_bg_color: app.theme_cls.primary_dark
+        text_size: self.width, self.height
+        padding: 25,
+        on_release:
+            app.clear_inputs()
+            app.root.current = "start"
+
+    MDRaisedButton:
+        text: "Show today's stats"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        md_bg_color: app.theme_cls.primary_dark
+        text_size: self.width, self.height
+        padding: 25,
+        on_release:
+            app.submit()
+            app.root.current = "stats"
+
+<StatsWindow>:
+    name: "stats"
+
+    MDLabel:
+        id: stats_label
+        pos_hint: {'center_x': .5, 'center_y': .8}
+        halign: 'center'
+        font_size: self.width/30
+        color: (0,.5,.75,1)
+
+    MDRaisedButton:
+        text: "Show today's stats"
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+        md_bg_color: app.theme_cls.primary_dark
+        text_size: self.width, self.height
+        padding: 25,
+        on_release:
+            app.show_stats()
+
+    MDRaisedButton:
+        text: "A new day begins"
+        pos_hint: {"center_x": 0.5, "center_y": 0.1}
+        md_bg_color: app.theme_cls.primary_dark
+        text_size: self.width, self.height
+        padding: 25,
+        on_release:
             app.clear_inputs()
             app.root.current = "start"

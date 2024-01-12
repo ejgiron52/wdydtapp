@@ -6,9 +6,6 @@ class dEntry:
 
     def __init__(self, wakeup_time, oob_time, slp_ql, dream, dtasks, wtb_time):
 
-        #increments day counter
-        dEntry.num_days += 1
-
         #assigns total num of days to instance
         self.num_day = dEntry.num_days
 
