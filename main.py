@@ -1,7 +1,6 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from datetime import datetime
-#from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.boxlayout import MDBoxLayout
 from entry import dEntry
