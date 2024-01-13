@@ -1,6 +1,7 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from datetime import datetime
+#from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivymd.uix.boxlayout import MDBoxLayout
 from entry import dEntry
@@ -34,7 +35,6 @@ class MainApp(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "BlueGray"
         kv = Builder.load_file('main.kv')
-        self.tags = []
         # create/connect to database
         conn = sqlite3.connect("stats_db.db")
         # create cursor that will do things to/in db
@@ -51,6 +51,19 @@ class MainApp(MDApp):
 
         conn.commit()
         conn.close()
+
+        conn = sqlite3.connect("tags_db.db")
+        # create cursor that will do things to/in db
+        c = conn.cursor()
+
+        c.execute("""CREATE TABLE if not exists tags(
+                            date text not null,
+                            tag)
+                        """)
+
+        conn.commit()
+        conn.close()
+
         self.entries = {}
         self.current_date = datetime.today().strftime('%Y-%m-%d')
         self.num_days = 0
@@ -82,6 +95,7 @@ class MainApp(MDApp):
 
     #adds tag to list of tags, prints tags
     def collect_tag(self):
+        date = self.current_date
         tag = self.root.get_screen('tags').ids.input.text
         if self.current_date not in self.entries:
             new_entry = self.make_entry(tag)
@@ -90,6 +104,15 @@ class MainApp(MDApp):
             old_entry = self.entries[self.current_date]
             old_entry.update_todays_tasks(tag)
         self.p_stats()
+        conn = sqlite3.connect("tags_db.db")
+        # create cursor that will do things to/in db
+        c = conn.cursor()
+        # Add record
+        c.execute("INSERT INTO tags (date,tag) VALUES (?, ?)",
+                  (date, tag))
+
+        conn.commit()
+        conn.close()
 
     #allows rentry of multiple tags
     def clear_tag_input(self):
@@ -121,7 +144,7 @@ class MainApp(MDApp):
         # create cursor that will do things to/in db
         c = conn.cursor()
         #Add record
-        c.execute("INSERT INTO stats (date,wakeup_time,oob_time,slp_ql,dream,wtb_time) VALUES (?, ?, ?, ?, ?, ?)", (date,wakeup_time,oob_time,slp_ql,dream,wtb_time))
+        c.execute("INSERT OR IGNORE INTO stats (date,wakeup_time,oob_time,slp_ql,dream,wtb_time) VALUES (?, ?, ?, ?, ?, ?)", (date,wakeup_time,oob_time,slp_ql,dream,wtb_time))
 
         conn.commit()
         conn.close()
@@ -152,6 +175,24 @@ class MainApp(MDApp):
             drm = f"{drm}{record[4]}"
             wtb = f"{wtb}{record[5]}"
             self.root.get_screen('stats').ids.stats_label.text = f"{word} stats\n Wakeup Time: {wt}\n Out of Bed Time: {oobt}\n Sleep Quality: {slpql}\n Dreamt about: {drm}\n Bedtime: {wtb}"
+
+        conn.commit()
+        conn.close()
+
+    def show_tags(self):
+        # create/connect to database
+        conn = sqlite3.connect("tags_db.db")
+        # create cursor that will do things to/in db
+        c = conn.cursor()
+
+        #get stats from db
+        c.execute("SELECT tag FROM tags WHERE DATE(date) = DATE('now', 'localtime')")
+        dtags = c.fetchall()
+        dtag = ""
+        for tag in dtags:
+            print(tag)
+            dtag = f"{dtag}{tag}"
+            self.root.get_screen('stats').ids.tags_label.text = f"Today's tags: {dtag}\n"
 
         conn.commit()
         conn.close()
